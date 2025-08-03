@@ -1,15 +1,16 @@
 {
     "name": "caravan/inexphone-sms-laravel",
-    "description": "Laravel package for InexPHONE SMS API integration with Saloon and Laravel Data",
+    "description": "Laravel package for InexPHONE SMS API integration with Saloon HTTP client and Laravel Data DTOs. Supports OTP, SMS sending, and blacklist management for Georgian mobile subscribers.",
     "type": "library",
     "license": "MIT",
-    "keywords": ["laravel", "sms", "inexphone", "otp", "georgia"],
+    "keywords": ["laravel", "sms", "inexphone", "otp", "georgia", "saloon", "laravel-data", "api-client"],
     "authors": [
         {
-            "name": "Caravan",
-            "email": "your-email@example.com"
+            "name": "Tamar Gagniashvili",
+            "email": "tamar.gagniashvili@example.com"
         }
     ],
+    "homepage": "https://github.com/Tamar-Gagniashvili/inexphone",
     "require": {
         "php": "^8.1",
         "illuminate/support": "^10.0|^11.0",
@@ -46,5 +47,11 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html build/coverage",
+        "format": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --verbose --ansi",
+        "analyse": "vendor/bin/phpstan analyse"
     }
 }
