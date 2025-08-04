@@ -13,7 +13,64 @@ A Laravel package for integrating with the InexPHONE SMS API, built with Saloon 
 
 ## Installation
 
-Install the package via Composer:
+Since this package is not yet published to Packagist, you have several installation options:
+
+### Option 1: Install from Git Repository
+
+Add the repository to your `composer.json` file:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Tamar-Gagniashvili/inexphone"
+        }
+    ],
+    "require": {
+        "caravan/inexphone-sms-laravel": "^1.0"
+    }
+}
+```
+
+Then run:
+
+```bash
+composer install
+```
+
+### Option 2: Install via Composer Require with VCS
+
+```bash
+composer config repositories.inexphone-sms vcs https://github.com/Tamar-Gagniashvili/inexphone
+composer require caravan/inexphone-sms-laravel:^1.0
+```
+
+### Option 3: Local Development Installation
+
+For local development, you can symlink the package:
+
+```bash
+# Clone the repository
+git clone https://github.com/Tamar-Gagniashvili/inexphone.git
+
+# In your Laravel project's composer.json, add:
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../path/to/inexphone"
+        }
+    ],
+    "require": {
+        "caravan/inexphone-sms-laravel": "@dev"
+    }
+}
+```
+
+### Future: Packagist Installation
+
+Once published to Packagist, you'll be able to install simply with:
 
 ```bash
 composer require caravan/inexphone-sms-laravel
@@ -192,6 +249,61 @@ Run the test suite:
 ```bash
 composer test
 ```
+
+## Troubleshooting
+
+### Class Not Found Errors
+
+If you encounter "Class not found" errors after installation:
+
+1. **Clear and regenerate autoloader:**
+   ```bash
+   composer dump-autoload
+   ```
+
+2. **Clear Laravel caches:**
+   ```bash
+   php artisan config:clear
+   php artisan cache:clear
+   php artisan route:clear
+   php artisan view:clear
+   ```
+
+3. **Ensure you're using the latest version:**
+   ```bash
+   composer update caravan/inexphone-sms-laravel
+   ```
+
+### Repository Installation Issues
+
+If you have issues with VCS installation:
+
+1. **Verify the repository URL is correct**
+2. **Ensure you have Git access to the repository**
+3. **Try clearing Composer cache:**
+   ```bash
+   composer clear-cache
+   ```
+
+### Service Provider Not Loading
+
+If the service provider isn't loading automatically:
+
+1. **Manually register in `config/app.php`:**
+   ```php
+   'providers' => [
+       // Other providers...
+       Caravan\InexPhoneSms\InexPhoneSmsServiceProvider::class,
+   ],
+   ```
+
+2. **Register the facade:**
+   ```php
+   'aliases' => [
+       // Other aliases...
+       'InexPhoneSms' => Caravan\InexPhoneSms\Facades\InexPhoneSms::class,
+   ],
+   ```
 
 ## Configuration Options
 
