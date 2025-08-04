@@ -16,6 +16,7 @@ use Caravan\InexPhoneSms\Http\Requests\SendCommercialSmsRequest;
 use Caravan\InexPhoneSms\Http\Requests\SendOtpRequest;
 use Caravan\InexPhoneSms\Http\Requests\SendSmsRequest;
 use Caravan\InexPhoneSms\Http\Requests\VerifyOtpRequest;
+use Caravan\InexPhoneSms\InexPhoneSmsException;
 use Saloon\Exceptions\Request\RequestException;
 
 class InexPhoneSmsClient
